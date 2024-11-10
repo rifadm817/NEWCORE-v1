@@ -16,13 +16,12 @@ from langchain.callbacks.manager import trace_as_chain_group
 drive.mount('/content/drive')
 
 # Set up API keys and environment variables
-os.environ["GOOGLE_API_KEY"] = "AIzaSyDWqOyv4P7-czrasx2KF4I0D8nzLAp_mxk"
+os.environ["GOOGLE_API_KEY"] = "-czrasx2KF4I0D8nzLAp_mxk"
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
-os.environ["LANGCHAIN_API_KEY"] = "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"
 os.environ["LANGCHAIN_PROJECT"] = "pr-only-thump-71"
 
-github_token = "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"
+github_token = "hWGojf_WkB8LH8k1F8LqlB5fTji6g0gPC6UeJo72mko1Bf0gEOQE6O4LKRBUjOWWfr"
 g = Github(github_token)
 repo = g.get_repo("rifadm817/NEWCORE-v1")
 
