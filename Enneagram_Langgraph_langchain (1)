@@ -1,0 +1,761 @@
+import os
+import git
+from github import Github
+from typing import TypedDict, List, Dict, Tuple
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain.prompts import ChatPromptTemplate
+from langchain.schema import StrOutputParser
+from langchain.schema.runnable import RunnablePassthrough
+from langgraph.graph import StateGraph, END
+from langsmith import Client
+from google.generativeai.types.safety_types import HarmCategory, HarmBlockThreshold
+from google.colab import drive
+from langchain.callbacks import collect_runs, LangChainTracer
+from langchain.callbacks.manager import trace_as_chain_group
+
+drive.mount('/content/drive')
+
+# Set up API keys and environment variables
+os.environ["GOOGLE_API_KEY"] = "AIzaSyDWqOyv4P7-czrasx2KF4I0D8nzLAp_mxk"
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
+os.environ["LANGCHAIN_API_KEY"] = "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"
+os.environ["LANGCHAIN_PROJECT"] = "pr-only-thump-71"
+
+github_token = "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"
+g = Github(github_token)
+repo = g.get_repo("rifadm817/NEWCORE-v1")
+
+# Initialize LangSmith client
+client = Client()
+
+# Create a ChatGoogleGenerativeAI model instance with safety settings
+safety_settings = {
+    HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+    HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_ONLY_HIGH
+}
+
+model = ChatGoogleGenerativeAI(
+    model="gemini-1.5-pro-002",
+    temperature=0.7,
+    max_output_tokens=8192,
+    safety_settings=safety_settings
+)
+
+
+
+
+NEWCORE_PRINCIPLES = """
+NEWCORE (New Enneagram Core Observation and Refinement Engine) is a novel approach to understanding the Enneagram, distinct from traditional models. Key principles include:
+
+1. Mechanical Derivation: Every trait, behavior, motivation, defense mechanism, etc., must be a direct and logical consequence of the core fear and desire, originating from the core wound. This mechanical link must be explicitly described.
+
+2. Internal Focus: Descriptions center on the inner experience—thoughts, feelings, motivations, perceptions—rather than external behaviors or societal expectations.
+
+3. Non-Volitional Responses: Behaviors are automatic, unconscious reactions to core fears, not conscious choices. Avoid language implying conscious effort, intention, or free will.
+
+4. Emergent Synthesis: Demonstrate the interconnectedness of all components (fears, desires, strengths, weaknesses, defenses, etc.). Show how they emerge from core dynamics and interact.
+
+5. Rejection of External Moral Judgments: NEWCORE is strictly non-moralistic. Avoid terms like "good," "bad," "right," "wrong," "should," or "shouldn't."
+
+6. Dualistic Relationship with External Reality: The internal world dynamically interacts with external pressures. External influences shape internal beliefs, which shape behavior, eliciting external responses, creating a continuous feedback loop.
+
+7. Avoidance of Contamination: Be vigilant about avoiding language or concepts from other personality systems (e.g., MBTI, Big Five). NEWCORE is a self-contained system.
+
+8. Focus on the "Why": Always trace behaviors back to core fears and desires.
+"""
+
+IMPURITIES_LIST = """
+Avoid these terms/concepts, as they are not mechanically derived from the core fear and desire or introduce external frameworks:
+
+General Impurities:
+* Moralistic Judgments: righteous, should, duty, obligation, etc.
+* Overly Positive/Negative: saintly, evil, toxic, virtuous, sinful, etc.
+* Clinical Terms: codependent, narcissistic, neurotic, etc.
+* Cognitive Functions (MBTI): thinking, feeling, sensing, intuitive, etc.
+* Social Roles: leader, follower, victim, helper, artist, etc.
+* Vague Terms: mature, unhealthy, balanced, evolved, good, bad, etc.
+* External Systems/Focus: organized, structured, successful, productive, workaholic, efficient, etc.
+* Outcomes Focus: happy, content, powerful, peaceful, etc. (Focus on the *process* not the outcome.)
+
+Type-Specific Impurities:
+* One: ethics, morality, righteous, meticulous, improving the world, duty, black and white thinking, order, orderly, organized, organizing, system, systematic, structured, structure.
+* Two: selfless, altruistic, co-dependent, manipulative, seductive, helpful, giving, generous, caring (unless clearly linked to the core fear/desire).
+* Three: strategic, visionary, work-life balance, emotional intelligence, innovative (unless with 7 wing), leadership, charisma, confidence (as inherent traits).
+* Four: authenticity, the shadow, creativity, romantic, unique, special, different, quirky (as inherent traits). Focus on the *drive* to be unique, not the *label* of uniqueness.
+* Five: intellectual mastery, strategic, detached observer, systems thinker, problem-solver, logical, rational (as defining characteristics), intellectual, intelligent.
+* Six: loyal, counterphobic, authority issues, security-seeking, dependent, doubtful, anxious (as defining traits). Focus on the *mechanisms* they use to seek security.
+* Seven: hedonistic, superficial, escapist, fear of commitment, scattered, irresponsible, positive, optimistic (as surface traits). Focus on the *drive* for fulfillment and avoidance of pain.
+* Eight: justice-seeker, dominant, vengeful, protective (of the weak), strategic, tough, ruthless, intimidating.
+* Nine: peaceful, harmonious, mediator, conflict-avoidant, easygoing, agreeable, accommodating (as defining traits).
+"""
+
+# Define tritypes to analyze
+TRITYPES = [
+    (5, 3, 1), (6, 1, 3)
+]
+
+class NEWCOREState(TypedDict):
+    type_number: int
+    description: str
+    comparisons: Dict[int, str]
+    family_comparison: str
+    refined_description: str
+
+class ReviewResult(TypedDict):
+    score: float
+    feedback: str
+    needs_revision: bool
+
+REVIEW_CRITERIA = """
+As a NEWCORE content reviewer, critically analyze the given content against these principles and requirements:
+
+1. Mechanical Purity (Score 1-5)
+- Every trait, behavior, and characteristic must be explicitly derived from core fears and desires
+- No unexplained behaviors or characteristics should be present
+- Clear and logical cause-and-effect relationships must be established
+- Evaluate how well the content demonstrates the mechanical link between core dynamics and manifestations
+
+2. Internal Focus (Score 1-5)
+- Strong emphasis on internal experiences over external behaviors
+- Detailed description of thought processes, emotional patterns, and internal dialogues
+- Minimal reference to social roles or outcomes unless directly tied to internal experiences
+- Assess the depth of exploration of the type's inner world
+
+3. Non-Volitional Nature (Score 1-5)
+- Automatic/unconscious responses must be clearly explained
+- No implications of conscious choice or intentionality in behaviors
+- Clear articulation of mechanical triggers for behaviors
+- Evaluate the consistency in portraying behaviors as reflexive responses to core fears/desires
+
+4. System Integration (Score 1-5)
+- All components (fears, desires, defenses, etc.) should be clearly interconnected
+- No isolated or unexplained elements should be present
+- Clear demonstration of how different aspects of the type interact and influence each other
+- Assess the emergent synthesis of the type's internal dynamics
+
+5. Language Purity (Score 1-5)
+- Absence of moralistic judgments or external value systems
+- No contamination from other personality systems or psychological frameworks
+- Clear, precise terminology consistent with NEWCORE principles
+- Evaluate the consistency and appropriateness of language used
+
+6. Dualistic Relationship with External Reality (Score 1-5)
+- Clear explanation of how the internal world shapes perception of and interaction with external reality
+- Demonstration of how external influences impact internal dynamics
+- Exploration of the feedback loop between internal states and external behaviors/responses
+- Assess the depth of analysis of this internal-external interplay
+
+7. Depth and Completeness (Score 1-5)
+- All required sections must be present and fully developed
+- Each section should provide detailed examples and thorough explanations
+- Consistent depth of analysis across all aspects of the description
+- Evaluate the overall comprehensiveness of the content
+
+8. Unique Insights and Nuanced Understanding (Score 1-5)
+- Presence of novel insights or particularly nuanced understanding of the type
+- Evidence of deep, critical thinking about the implications of core dynamics
+- Exploration of complex interactions and subtle manifestations of type dynamics
+- Assess the originality and depth of insights provided
+
+9. Internal Consistency (Score 1-5)
+- No contradictions or inconsistencies in how the type is portrayed
+- Coherent narrative throughout the description
+- Logical flow from core dynamics to manifestations
+- Evaluate the overall consistency of the type portrayal
+
+10. Levels of Health (Score 1-5)
+- Clear differentiation of internal experiences at different levels of health
+- Mechanical derivation of health levels from core fears and desires
+- Detailed exploration of how core dynamics manifest across the health spectrum
+- Assess the depth and accuracy of health level descriptions
+
+For each criterion:
+1. Provide a numerical score (1-5)
+2. Offer at least 3 specific examples of adherence to NEWCORE principles
+3. Identify at least 3 instances of deviation from NEWCORE principles or areas for improvement (if any)
+4. Provide detailed, actionable suggestions for improvement
+
+Additional Review Tasks:
+1. Word Count: Ensure the description meets the minimum word count (2000 for single types, 2500 for tritypes)
+2. Section Completeness: Check that all required sections are present and fully developed
+3. Examples and Illustrations: Evaluate the quality and relevance of examples provided
+4. Impurities Check: Identify any instances of impurities as listed in the IMPURITIES_LIST
+5. Tritype Integration (for tritype descriptions): Assess how well the three types are integrated and their interactions explained
+
+Provide a comprehensive review including:
+1. Detailed scores and examples for each criterion
+2. An overall assessment of the content's adherence to NEWCORE principles
+3. A clear decision on whether the content needs revision (yes/no)
+4. If revision is needed, provide specific, section-by-section guidance for improvement
+5. Highlight any particularly strong aspects of the description that should be maintained or expanded upon
+
+Remember to think critically and creatively. Look for subtle deviations from NEWCORE principles and consider implications that may not be immediately obvious. Your goal is to ensure the highest possible quality and purity of NEWCORE descriptions.
+"""
+
+def file_exists(filename):
+    return os.path.isfile(filename)
+
+def load_from_markdown(filename):
+    drive_path = "/content/drive/MyDrive/NEWCORE_Analysis"
+    filepath = f"{drive_path}/{filename}"
+    
+    drive_content = None
+    github_content = None
+    
+    # Check if file exists in Drive
+    if os.path.isfile(filepath):
+        with open(filepath, 'r') as f:
+            drive_content = f.read()
+    
+    # Check GitHub
+    try:
+        github_file = repo.get_contents(filename)
+        github_content = github_file.decoded_content.decode()
+    except Exception as e:
+        if "404" not in str(e):
+            print(f"Error accessing {filename} on GitHub: {str(e)}")
+    
+    # Compare and use the most recent version
+    if drive_content and github_content:
+        if drive_content != github_content:
+            # Use the Drive version and update GitHub
+            save_to_drive_and_github(drive_content, filename)
+            return drive_content
+        return github_content
+    elif drive_content:
+        # Only Drive version exists, update GitHub
+        save_to_drive_and_github(drive_content, filename)
+        return drive_content
+    elif github_content:
+        # Only GitHub version exists, update Drive
+        save_to_drive_and_github(github_content, filename)
+        return github_content
+    
+    return None
+
+def save_to_drive_and_github(content, filename):
+    # Save to Google Drive
+    drive_path = "/content/drive/MyDrive/NEWCORE_Analysis"
+    os.makedirs(drive_path, exist_ok=True)
+    drive_file_path = os.path.join(drive_path, filename)
+    
+    # Always save to Drive
+    with open(drive_file_path, 'w') as f:
+        f.write(content)
+    print(f"File {filename} saved to Google Drive")
+    
+    # Check if file exists on GitHub
+    try:
+        github_file = repo.get_contents(filename)
+        github_content = github_file.decoded_content.decode()
+        
+        # If content is different, update GitHub
+        if content != github_content:
+            repo.update_file(filename, f"Update {filename}", content, github_file.sha)
+            print(f"File {filename} updated on GitHub")
+        else:
+            print(f"File {filename} is up to date on GitHub")
+    except Exception as e:
+        # If file doesn't exist on GitHub, create it
+        if "404" in str(e):
+            repo.create_file(filename, f"Create {filename}", content)
+            print(f"File {filename} created on GitHub")
+        else:
+            print(f"Error interacting with GitHub for {filename}: {str(e)}")
+
+
+
+def create_base_description_agent():
+    prompt = ChatPromptTemplate.from_template(
+        "As a NEWCORE Enneagram expert, generate a comprehensive, mechanically pure base description for Enneagram Type {type_number}. "
+        "Adhere strictly to these NEWCORE principles:\n\n{principles}\n\n"
+        "Provide an exhaustive description covering ALL of these sections:\n"
+        "1. Core Wound (Detailed explanation of early experiences and their impact, with at least 3 specific examples)\n"
+        "2. Childhood Message (Received) (At least 5 specific examples of verbal and non-verbal messages)\n"
+        "3. Unconscious Belief (In-depth analysis of the belief system, including how it forms and manifests)\n"
+        "4. Core Fear (At least 6 distinct fears, each with detailed explanations and examples of how they manifest internally)\n"
+        "5. Core Desire (At least 6 desires, each paired with and countering a specific fear, with examples of internal experiences)\n"
+        "6. Key Process (Comprehensive explanation of the type's central coping mechanism, including its formation, operation, and impact)\n"
+        "7. Self-[Key Process] Manifestations (At least 5 specific behavioral examples, each with a detailed explanation of the internal experience)\n"
+        "8. Defensive Mechanisms (At least 4 mechanisms with detailed explanations, examples, and how they relate to core fears and desires)\n"
+        "9. Stabilizing Types/Integration and Disintegration Points (In-depth analysis of internal shifts, with specific examples of thought patterns and emotional experiences)\n"
+        "10. Type's Trap (Detailed explanation of self-defeating patterns, including internal dialogue examples)\n"
+        "11. Levels of Health (Comprehensive description of all nine levels, focusing on internal experiences at each level)\n\n"
+        "For each section:\n"
+        "- Provide at least 3 detailed examples\n"
+        "- Explicitly explain how each aspect mechanically derives from the core fear and desire\n"
+        "- Describe internal thought processes and emotional patterns in depth\n"
+        "- Include specific examples of internal dialogue or self-talk\n"
+        "- Explain how the internal experience shapes perception of and interaction with external reality\n\n"
+        "Ensure every aspect is mechanically derived from the core fears and desires. Focus on internal experiences rather than external behaviors. "
+        "You MUST complete ALL sections in detail. Do not leave any section incomplete or 'available upon request'. "
+        "Aim for a minimum of 2500 words. The goal is depth, completeness, and a thorough exploration of the type's internal world.\n\n"
+        "Strictly avoid these impurities:\n{impurities}"
+    )
+    return prompt | model | StrOutputParser()
+
+def create_comparison_agent():
+    prompt = ChatPromptTemplate.from_template(
+        "Using the NEWCORE (New Enneagram Core Observation and Refinement Engine) framework, "
+        "compare Enneagram Type {type1} and Type {type2}. NEWCORE principles:\n\n{principles}\n\n"
+        "Base DIFFERENCES:\n\nType {type1}: {desc1}\n\nType {type2}: {desc2}\n\n"
+        "Provide a structured comparison focusing on:\n"
+        "1. Core fear and desire differences\n"
+        "2. Key process distinctions\n"
+        "3. Defensive mechanism contrasts\n"
+        "4. Potential misidentification factors\n"
+        "5. Interaction of internal worlds\n"
+        "Further expand the above list if there is further differences"
+        "Ensure the comparison adheres to NEWCORE principles and avoids these impurities:\n\n{impurities}"
+    )
+    return prompt | model | StrOutputParser()
+
+def create_family_comparison_agent():
+    prompt = ChatPromptTemplate.from_template(
+        "Using the NEWCORE (New Enneagram Core Observation and Refinement Engine) framework, "
+        "compare the {family} family types ({types}). NEWCORE principles:\n\n{principles}\n\n"
+        "Base descriptions:\n\n{descriptions}\n\n"
+        "Provide a structured comparison focusing on:\n"
+        "1. Shared core fears and desires within the family\n"
+        "2. Distinct manifestations of family traits\n"
+        "3. Interaction patterns within the family\n"
+        "4. Common defensive mechanisms\n"
+        "Ensure the comparison adheres to NEWCORE principles and avoids these impurities:\n\n{impurities}"
+    )
+    return prompt | model | StrOutputParser()
+
+def create_refinement_agent():
+    prompt = ChatPromptTemplate.from_template(
+        "Refine the NEWCORE (New Enneagram Core Observation and Refinement Engine) description for Type {type_number} based on these comparisons. "
+        "NEWCORE principles:\n\n{principles}\n\n"
+        "Type comparisons:\n{type_comparisons}\n\n"
+        "Family comparison:\n{family_comparison}\n\n"
+        "Original description:\n{base_desc}\n\n"
+        "Provide an improved description that incorporates insights from all comparisons "
+        "while maintaining NEWCORE principles and avoiding these impurities:\n\n{impurities}"
+    )
+    return prompt | model | StrOutputParser()
+
+def create_tritype_analysis_agent():
+    prompt = ChatPromptTemplate.from_template(
+        "Conduct a comprehensive NEWCORE analysis of the Enneagram tritype {type1}-{type2}-{type3}. "
+        "NEWCORE principles:\n\n{principles}\n\n"
+        "Refined descriptions of component types:\n\n"
+        "Type {type1}: {desc1}\nType {type2}: {desc2}\nType {type3}: {desc3}\n\n"
+        "Perform an exhaustive analysis covering:\n"
+        "1. Detailed intra-family comparisons for each represented family\n"
+        "2. In-depth exploration of inter-family interactions between the three types\n"
+        "3. Comprehensive synthesis of how the three types' core fears and desires interact and influence each other\n"
+        "4. Extensive analysis of unique defensive mechanisms and key processes emerging from this tritype combination\n"
+        "5. Thorough examination of potential internal conflicts and their resolutions\n"
+        "6. Detailed comparison with other tritypes in similar positions\n"
+        "7. Analysis of how this tritype's internal world shapes their perception of and interaction with external reality\n"
+        "8. Comprehensive exploration of growth and stress patterns unique to this tritype\n"
+        "9. In-depth analysis of how this tritype manifests across different levels of health\n\n"
+        "Provide specific examples, detailed explanations, and nuanced insights for each point. "
+        "Ensure strict adherence to NEWCORE principles and avoid these impurities:\n\n{impurities}\n\n"
+        "Do not limit yourself to a specific word count – the goal is to provide the most comprehensive and insightful analysis possible."
+    )
+    return prompt | model | StrOutputParser()
+
+def create_tritype_description_agent():
+    prompt = ChatPromptTemplate.from_template(
+        "Generate a pure NEWCORE (New Enneagram Core Observation and Refinement Engine) description for the tritype {type1}-{type2}-{type3}. "
+        "NEWCORE principles:\n\n{principles}\n\n"
+        "Use this analysis as context:\n\n{analysis}\n\n"
+        "Provide a comprehensive description covering:\n"
+        "1. Blended Core Wound\n2. Integrated Childhood Message\n3. Synthesized Unconscious Belief\n"
+        "4. Tritype Core Fears (5 distinct fears, incorporating all three types)\n"
+        "5. Tritype Core Desires (5 desires, incorporating all three types)\n"
+        "6. Unique Key Process\n7. Combined Defensive Mechanisms\n"
+        "8. Tritype's Trap\n9. Levels of Health (Five Levels)\n"
+        "10. Comparison with other tritypes and individual types\n\n"
+        "Ensure all content is mechanically derived from the core fears and desires of all three types, "
+        "maintaining NEWCORE principles and avoiding these impurities:\n\n{impurities}"
+    )
+    return prompt | model | StrOutputParser()
+
+def create_final_purification_agent():
+    prompt = ChatPromptTemplate.from_template(
+        "You are the NEWCORE Final Purification Agent, tasked with creating the ultimate, mechanically pure description of Enneagram tritype {type1}-{type2}-{type3}. Your goal is to synthesize all previous analyses into a comprehensive, nuanced, and deeply insightful description that fully embodies NEWCORE principles.\n\n"
+        "NEWCORE Principles:\n{principles}\n\n"
+        "Original tritype description:\n{description}\n\n"
+        "Your task:\n"
+        "1. Thoroughly analyze the original description for any remaining impurities or deviations from NEWCORE principles.\n"
+        "2. Refine and expand each section to ensure maximum depth, nuance, and mechanical purity.\n"
+        "3. Ensure every trait, behavior, and characteristic is explicitly derived from the core fears and desires of all three types in the tritype.\n"
+        "4. Elaborate on the unique interactions between the three types, showing how they create a distinct internal experience.\n"
+        "5. Provide detailed examples of internal thought processes, emotional patterns, and unconscious reactions specific to this tritype.\n"
+        "6. Explain the tritype's relationship with external reality, focusing on how their internal world shapes their perceptions and behaviors.\n"
+        "7. Describe the tritype's growth and stress patterns, including detailed explanations of integration and disintegration.\n"
+        "8. Include a comprehensive analysis of the tritype's levels of health, from highly unhealthy to highly healthy states.\n"
+        "9. Provide a detailed analysis of the tritype's unique internal dialogue, including examples of self-talk and inner conflicts.\n"
+        "10. Explain how the tritype's core fears and desires mechanically drive their perception of and response to external events.\n\n"
+        "Strictly avoid these impurities:\n{impurities}\n\n"
+        "Produce an exhaustive, in-depth description that captures the full complexity of this tritype through the NEWCORE lens. Aim for a minimum of 2500 words – the goal is completeness and depth of insight."
+    )
+    return prompt | model | StrOutputParser()
+
+def create_content_reviewer():
+    prompt = ChatPromptTemplate.from_template(
+        "You are a highly specialized NEWCORE content reviewer with deep expertise in the Enneagram and the NEWCORE framework. Your task is to critically analyze and evaluate the following content:\n\n{content}\n\n"
+        "Content type: {content_type}\n\n"
+        "Review Criteria:\n{criteria}\n\n"  # Changed this line
+        "NEWCORE Principles:\n{principles}\n\n"
+        "Previous feedback (if any):\n{previous_feedback}\n\n"
+        "Strictly avoid these impurities in your review:\n{impurities}\n\n"
+        "Provide a comprehensive review as outlined in the review criteria. Be thorough, critical, and constructive in your analysis."
+    )
+    return prompt | model | StrOutputParser()
+
+def create_revision_agent():
+    prompt = ChatPromptTemplate.from_template(
+        "Revise this content based on the review feedback:\n\n"
+        "Original content:\n{content}\n\n"
+        "Review feedback:\n{feedback}\n\n"
+        "NEWCORE principles:\n{principles}\n\n"
+        "Impurities to avoid:\n{impurities}\n\n"
+        "Provide a revised version that addresses all feedback points while maintaining NEWCORE purity."
+    )
+    return prompt | model | StrOutputParser()
+
+def parse_review_result(review_text: str) -> ReviewResult:
+    try:
+        lines = review_text.split('\n')
+        if not lines:
+            return {"score": 0.0, "feedback": "Empty response", "needs_revision": True}
+
+        # Initialize variables
+        score = 0.0
+        feedback = []
+        needs_revision = True
+
+        # Parse the review text
+        for line in lines:
+            line = line.strip()
+            if line.lower().startswith("overall score:"):
+                try:
+                    score = float(line.split(':')[1].strip().split()[0])
+                except ValueError:
+                    pass  # If we can't parse the score, keep it as 0.0
+            elif line.lower().startswith("needs revision:"):
+                needs_revision = "yes" in line.lower()
+            elif line and not line.lower().startswith(("overall score:", "needs revision:")):
+                feedback.append(line)
+
+        # If we couldn't find an explicit score, try to estimate it from the feedback
+        if score == 0.0:
+            score_mentions = [line for line in feedback if "score" in line.lower()]
+            if score_mentions:
+                try:
+                    score = float(score_mentions[0].split(':')[1].strip().split()[0])
+                except (ValueError, IndexError):
+                    pass  # If we can't parse the score, keep it as 0.0
+
+        return {
+            "score": score,
+            "feedback": "\n".join(feedback),
+            "needs_revision": needs_revision
+        }
+    except Exception as e:
+        return {
+            "score": 0.0,
+            "feedback": f"Parsing error: {str(e)}",
+            "needs_revision": True
+        }
+
+def review_and_revise(content: str, content_type: str, max_iterations: int = 3) -> Tuple[str, List[ReviewResult]]:
+    reviewer = create_content_reviewer()
+    revision_agent = create_revision_agent()
+    review_history = []
+    current_content = content
+
+    with collect_runs() as cb:
+        for iteration in range(max_iterations):
+            try:
+                # Get review
+                review_result = reviewer.invoke(
+                  {
+                      "content": current_content,
+                      "content_type": content_type,
+                      "criteria": REVIEW_CRITERIA,  # Make sure this is being passed
+                      "principles": NEWCORE_PRINCIPLES,
+                      "impurities": IMPURITIES_LIST,
+                      "previous_feedback": str(review_history) if review_history else "None"
+                  },
+                  config={
+                      "metadata": {
+                          "iteration": iteration,
+                          "content_type": content_type
+                      },
+                      "tags": ["review"]
+                  }
+              )
+
+                # Parse review result
+                review_dict = parse_review_result(review_result)
+                review_history.append(review_dict)
+
+                # Check if content meets standards
+                min_words = 2500 if "tritype" in content_type.lower() else 2000
+                if not review_dict["needs_revision"] and len(current_content.split()) >= min_words:
+                    return current_content, review_history
+
+                # Revise content
+                current_content = revision_agent.invoke(
+                    {
+                        "content": current_content,
+                        "feedback": review_dict["feedback"],
+                        "principles": NEWCORE_PRINCIPLES,
+                        "impurities": IMPURITIES_LIST
+                    },
+                    config={
+                        "metadata": {
+                            "iteration": iteration,
+                            "content_type": content_type
+                        },
+                        "tags": ["revision"]
+                    }
+                )
+            except Exception as e:
+                print(f"Error in review_and_revise for {content_type}: {str(e)}")
+                return current_content, review_history
+
+    return current_content, review_history
+
+def generate_base_description(state: NEWCOREState) -> NEWCOREState:
+    filename = f"base_enneagram_type_{state['type_number']}.md"
+    existing_content = load_from_markdown(filename)
+    if existing_content:
+        state["description"] = existing_content
+        print(f"Loaded existing base description for Type {state['type_number']}")
+    else:
+        try:
+            generator = create_base_description_agent()
+            description = generator.invoke(
+                {
+                    "type_number": state["type_number"],
+                    "principles": NEWCORE_PRINCIPLES,
+                    "impurities": IMPURITIES_LIST
+                },
+                config={
+                    "metadata": {"type": state['type_number']},
+                    "tags": ["base_description"]
+                }
+            )
+            description, review_history = review_and_revise(description, f"Base Description Type {state['type_number']}")
+            state["description"] = description
+            save_to_drive_and_github(description, filename)
+            print(f"Generated new base description for Type {state['type_number']}")
+        except Exception as e:
+            print(f"Error generating base description for Type {state['type_number']}: {str(e)}")
+            state["description"] = f"Error: {str(e)}"
+    return state
+
+def compare_types(state: NEWCOREState, all_descriptions: Dict[int, str], principles: str, impurities: str) -> NEWCOREState:
+    comparisons = {}
+    for i in range(1, 10):
+        if i != state["type_number"]:
+            filename = f"comparison_type_{state['type_number']}_vs_{i}.md"
+            existing_content = load_from_markdown(filename)
+            if existing_content:
+                comparisons[i] = existing_content
+                print(f"Loaded existing comparison for Type {state['type_number']} vs Type {i}")
+            else:
+                comparator = create_comparison_agent()
+                comparison = comparator.invoke({
+                    "type1": state["type_number"],
+                    "type2": i,
+                    "desc1": state["description"],
+                    "desc2": all_descriptions[i],
+                    "principles": principles,
+                    "impurities": impurities
+                })
+                comparison, review_history = review_and_revise(comparison, f"Comparison Type {state['type_number']} vs {i}")
+                comparisons[i] = comparison
+                save_to_drive_and_github(comparison, filename)
+                print(f"Generated new comparison for Type {state['type_number']} vs Type {i}")
+    state["comparisons"] = comparisons
+    return state
+
+def compare_family(family: str, types: List[int], descriptions: Dict[int, str], principles: str, impurities: str) -> str:
+    filename = f"{family}_family_comparison.md"
+    existing_content = load_from_markdown(filename)
+    if existing_content:
+        print(f"Loaded existing comparison for {family} family")
+        return existing_content
+    else:
+        comparator = create_family_comparison_agent()
+        family_comparison = comparator.invoke({
+            "family": family,
+            "types": ", ".join(map(str, types)),
+            "descriptions": "\n\n".join([f"Type {t}: {descriptions[t]}" for t in types]),
+            "principles": principles,
+            "impurities": impurities
+        })
+        family_comparison, review_history = review_and_revise(family_comparison, f"{family} Family Comparison")
+        save_to_drive_and_github(family_comparison, filename)
+        print(f"Generated new comparison for {family} family")
+        return family_comparison
+
+def refine_description(state: NEWCOREState, principles: str, impurities: str) -> NEWCOREState:
+    filename = f"refined_enneagram_type_{state['type_number']}.md"
+    existing_content = load_from_markdown(filename)
+    if existing_content:
+        state["refined_description"] = existing_content
+        print(f"Loaded existing refined description for Type {state['type_number']}")
+    else:
+        refiner = create_refinement_agent()
+        refined_description = refiner.invoke({
+            "type_number": state["type_number"],
+            "base_desc": state["description"],
+            "type_comparisons": "\n\n".join([f"Type {i}: {comp}" for i, comp in state["comparisons"].items()]),
+            "family_comparison": state["family_comparison"],
+            "principles": principles,
+            "impurities": impurities
+        })
+        refined_description, review_history = review_and_revise(refined_description, f"Refined Description Type {state['type_number']}")
+        state["refined_description"] = refined_description
+        save_to_drive_and_github(refined_description, filename)
+        print(f"Generated new refined description for Type {state['type_number']}")
+    return state
+
+def analyze_tritype(type1: int, type2: int, type3: int, refined_descriptions: Dict[int, str], all_tritypes: List[tuple], all_comparisons: Dict[int, Dict[int, str]]) -> str:
+    filename = f"tritype_{type1}-{type2}-{type3}_analysis.md"
+    existing_content = load_from_markdown(filename)
+    if existing_content:
+        print(f"Loaded existing analysis for tritype {type1}-{type2}-{type3}")
+        return existing_content
+    else:
+        analyzer = create_tritype_analysis_agent()
+        similar_tritypes = [t for t in all_tritypes if t[0] == type1 or t[1] == type2 or t[2] == type3]
+        relevant_comparisons = {
+            f"{type1}_vs_{type2}": all_comparisons[type1][type2],
+            f"{type1}_vs_{type3}": all_comparisons[type1][type3],
+            f"{type2}_vs_{type3}": all_comparisons[type2][type3]
+        }
+        analysis = analyzer.invoke({
+            "type1": type1,
+            "type2": type2,
+            "type3": type3,
+            "desc1": refined_descriptions[type1],
+            "desc2": refined_descriptions[type2],
+            "desc3": refined_descriptions[type3],
+            "similar_tritypes": str(similar_tritypes),
+            "relevant_comparisons": str(relevant_comparisons),
+            "principles": NEWCORE_PRINCIPLES,
+            "impurities": IMPURITIES_LIST
+        })
+        analysis, review_history = review_and_revise(analysis, f"Tritype {type1}-{type2}-{type3} Analysis")
+        save_to_drive_and_github(analysis, filename)
+        print(f"Generated new analysis for tritype {type1}-{type2}-{type3}")
+        return analysis
+
+def generate_tritype_description(type1: int, type2: int, type3: int, analysis: str) -> str:
+    filename = f"tritype_{type1}-{type2}-{type3}_description.md"
+    existing_content = load_from_markdown(filename)
+    if existing_content:
+        print(f"Loaded existing description for tritype {type1}-{type2}-{type3}")
+        return existing_content
+    else:
+        generator = create_tritype_description_agent()
+        description = generator.invoke({
+            "type1": type1,
+            "type2": type2,
+            "type3": type3,
+            "analysis": analysis,
+            "principles": NEWCORE_PRINCIPLES,
+            "impurities": IMPURITIES_LIST
+        })
+        description, review_history = review_and_revise(description, f"Tritype {type1}-{type2}-{type3} Description")
+        save_to_drive_and_github(description, filename)
+        print(f"Generated new description for tritype {type1}-{type2}-{type3}")
+        return description
+
+def final_purification(type1: int, type2: int, type3: int, description: str) -> str:
+    filename = f"tritype_{type1}-{type2}-{type3}_purified.md"
+    existing_content = load_from_markdown(filename)
+    if existing_content:
+        print(f"Loaded existing purified description for tritype {type1}-{type2}-{type3}")
+        return existing_content
+    else:
+        purifier = create_final_purification_agent()
+        purified_description = purifier.invoke({
+            "type1": type1,
+            "type2": type2,
+            "type3": type3,
+            "description": description,
+            "principles": NEWCORE_PRINCIPLES,
+            "impurities": IMPURITIES_LIST
+        })
+        purified_description, review_history = review_and_revise(purified_description, f"Purified Tritype {type1}-{type2}-{type3}")
+        save_to_drive_and_github(purified_description, filename)
+        print(f"Generated new purified description for tritype {type1}-{type2}-{type3}")
+        return purified_description
+
+# Workflow execution
+print("Generating base descriptions...")
+base_descriptions = {}
+for i in range(1, 10):
+    try:
+        initial_state = {"type_number": i, "description": "", "comparisons": {}, "family_comparison": "", "refined_description": ""}
+        state = generate_base_description(initial_state)
+        base_descriptions[i] = state["description"]
+    except Exception as e:
+        print(f"Error processing Type {i}: {str(e)}")
+        base_descriptions[i] = f"Error: {str(e)}"
+
+print("\nGenerating type comparisons...")
+all_comparisons = {}
+for i in range(1, 10):
+    try:
+        state = {"type_number": i, "description": base_descriptions[i], "comparisons": {}, "family_comparison": "", "refined_description": ""}
+        state = compare_types(state, base_descriptions, NEWCORE_PRINCIPLES, IMPURITIES_LIST)
+        all_comparisons[i] = state["comparisons"]
+    except Exception as e:
+        print(f"Error comparing Type {i}: {str(e)}")
+        all_comparisons[i] = {j: f"Error: {str(e)}" for j in range(1, 10) if j != i}
+
+print("\nGenerating family comparisons...")
+families = {
+    "Gut": [8, 9, 1],
+    "Heart": [2, 3, 4],
+    "Head": [5, 6, 7]
+}
+
+family_comparisons = {}
+for family, types in families.items():
+    try:
+        family_comparisons[family] = compare_family(family, types, base_descriptions, NEWCORE_PRINCIPLES, IMPURITIES_LIST)
+    except Exception as e:
+        print(f"Error comparing {family} family: {str(e)}")
+        family_comparisons[family] = f"Error: {str(e)}"
+
+print("\nRefining descriptions...")
+refined_descriptions = {}
+for i in range(1, 10):
+    try:
+        state = {"type_number": i, "description": base_descriptions[i], "comparisons": all_comparisons[i],
+                 "family_comparison": family_comparisons[next(f for f, t in families.items() if i in t)], "refined_description": ""}
+        state = refine_description(state, NEWCORE_PRINCIPLES, IMPURITIES_LIST)
+        refined_descriptions[i] = state["refined_description"]
+    except Exception as e:
+        print(f"Error refining Type {i}: {str(e)}")
+        refined_descriptions[i] = f"Error: {str(e)}"
+
+print("\nGenerating tritype descriptions...")
+for tritype in TRITYPES:
+    try:
+        print(f"\nAnalyzing tritype {tritype[0]}-{tritype[1]}-{tritype[2]}...")
+        tritype_analysis = analyze_tritype(tritype[0], tritype[1], tritype[2], refined_descriptions, TRITYPES, all_comparisons)
+
+        print(f"Generating description for tritype {tritype[0]}-{tritype[1]}-{tritype[2]}...")
+        tritype_description = generate_tritype_description(tritype[0], tritype[1], tritype[2], tritype_analysis)
+
+        print(f"Performing final purification for tritype {tritype[0]}-{tritype[1]}-{tritype[2]}...")
+        purified_description = final_purification(tritype[0], tritype[1], tritype[2], tritype_description)
+    except Exception as e:
+        print(f"Error processing tritype {tritype[0]}-{tritype[1]}-{tritype[2]}: {str(e)}")
+
+print("\nNEWCORE Enneagram analysis complete.")
