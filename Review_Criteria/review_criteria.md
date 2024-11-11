@@ -1,72 +1,79 @@
-Version: 10
+Version: 11
 
 ```json
 {
-  "overall_score": "5",
-  "needs_revision": "false",
+  "overall_score": "4",
+  "needs_revision": "true",
   "criteria_scores": {
     "Mechanical Causality": {
-      "score": "5",
-      "feedback": "The introduction of 'Internal Process Chain Analysis' significantly strengthens this criterion by requiring a detailed, step-by-step breakdown of the internal process.  The clarification of 'Mechanism of Action' with examples further enhances the specificity and clarity of this crucial aspect of NEWCORE."
+      "score": "4",
+      "feedback": "While the emphasis on Internal Process Chain Analysis is excellent, the provided examples lack the depth and rigor needed to truly exemplify mechanical purity. More detailed breakdowns, demonstrating the precise causal link between each step in the chain, are required."
     },
     "Internal Focus": {
       "score": "5",
-      "feedback": "This criterion remains strong and well-defined."
+      "feedback": "This criterion is well-defined and effectively addressed in the new insights."
     },
     "Non-Volitional Nature": {
-      "score": "5",
-      "feedback": "This criterion remains well-defined."
+      "score": "4",
+      "feedback": "While the concept is understood, the practical application needs strengthening.  The new insights should explicitly address how to avoid volitional language in describing internal processes and reactions."
     },
     "System Integration": {
-      "score": "5",
-      "feedback": "The addition of 'System Dynamics Diagram' and 'Emergent Synthesis Narrative' further enhances this criterion, providing clear guidelines for visually representing and narratively explaining the interconnectedness of the type's internal system."
+      "score": "4",
+      "feedback": "The inclusion of System Dynamics Diagrams is a significant improvement. However, clear guidelines and templates for their creation are missing.  The 'Emergent Synthesis Narrative' needs further definition regarding its scope and purpose."
     },
     "Language Purity": {
-      "score": "5",
-      "feedback": "The operationalization of the 'Impurity Table' and the emphasis on 'Contextual Impurity' significantly improve this criterion by providing concrete processes and nuanced understanding of language purity within NEWCORE."
+      "score": "4",
+      "feedback": "Addressing the Impurity Table is crucial. The new insights correctly identify this ongoing challenge.  However, a concrete plan for regular review, community input, and dissemination of updates is needed."
     },
     "Dualistic Relationship with External Reality": {
-      "score": "5",
-      "feedback": "The requirement for specific scenarios, internal dialogues, and internal process chain analyses strengthens this criterion by providing concrete examples of the dynamic interplay between internal and external realities."
+      "score": "4",
+      "feedback": "The new insights should emphasize how to demonstrate this dynamic interplay more effectively. Specific examples of how internal processes influence external interactions and vice-versa are needed."
     },
     "Depth and Completeness": {
-      "score": "5",
-      "feedback": "The improvements across all criteria contribute to a more comprehensive and nuanced understanding, ensuring depth and completeness."
+      "score": "4",
+      "feedback": "While the new insights aim for greater depth, the practical implementation requires more specific guidelines and examples to ensure consistent application across all criteria."
     },
     "Unique Insights and Nuanced Understanding": {
       "score": "5",
-      "feedback": "This criterion remains relevant and well-defined."
+      "feedback": "The new insights adequately address this criterion."
     },
     "Internal Consistency": {
       "score": "5",
-      "feedback": "This criterion remains essential."
+      "feedback": "This criterion remains essential and is well-addressed."
     },
     "Levels of Health": {
-      "score": "5",
-      "feedback": "The requirement for specific examples of internal dialogues and internal process chain analyses at different levels of health provides concrete illustrations of the mechanical shifts across levels."
+      "score": "4",
+      "feedback": "While the concept is sound, practical application needs improvement.  Specific templates or structured approaches for demonstrating shifts in internal processes across levels of health are required."
     },
     "Subtype Integration": {
-      "score": "5",
-      "feedback": "The addition of 'Subtype Influence Diagrams' strengthens this criterion by visually demonstrating the internal shifts caused by subtypes."
+      "score": "4",
+      "feedback": "Similar to System Dynamics Diagrams, Subtype Influence Diagrams require clearer guidelines and templates for their creation and interpretation."
     },
     "Internal Timeline": {
-      "score": "5",
-      "feedback": "This criterion remains strong and relevant."
+      "score": "4",
+      "feedback": "This criterion needs further clarification.  How should content creators demonstrate the unfolding of internal processes over time?"
     },
     "Cognitive Biases": {
-      "score": "5",
-      "feedback": "This criterion remains strong and relevant."
+      "score": "4",
+      "feedback": "The connection between cognitive biases and core fears/desires needs more explicit explanation.  Provide examples of how specific biases manifest mechanically for each type."
     },
     "Emergent Synthesis": {
-      "score": "5",
-      "feedback": "The additions of 'System Dynamics Diagram' and 'Emergent Synthesis Narrative' provide clear guidelines and strengthen this crucial criterion."
+      "score": "4",
+      "feedback": "The new insights highlight the importance of this criterion, but practical application needs strengthening. Clearer guidelines and examples are needed for demonstrating emergent synthesis effectively."
+    },
+    "Interaction of Internal Worlds": {
+      "score": "N/A",
+      "feedback": "This is a valuable new criterion that addresses a significant gap.  Its inclusion will greatly enhance the understanding of interpersonal dynamics within the Enneagram."
     }
   },
-  "detailed_feedback": "Version 10 represents a significant advancement in the NEWCORE criteria. The new insights are effectively integrated, addressing key challenges related to mechanical purity and practical application. The introduction of Internal Process Chain Analysis, System Dynamics Diagrams, Subtype Influence Diagrams, and the operationalization of the Impurity Table, along with the enhanced requirements for existing criteria, significantly strengthens the framework's ability to ensure content purity and facilitate a deeper, more nuanced understanding of the Enneagram. The focus on concrete examples, visual aids, and structured processes will greatly benefit content creators and reviewers.",
+  "detailed_feedback": "Version 11 builds upon the progress of Version 10, incorporating valuable insights and addressing key challenges. However, the practical application of these insights requires more specific guidelines, templates, and examples.  The introduction of the 'Interaction of Internal Worlds' criterion is a significant improvement.  Overall, Version 11 shows promise but needs further refinement to ensure consistent and effective implementation.",
   "improvement_suggestions": [
-    "Continue developing and disseminating high-quality exemplar content showcasing best practices for each criterion across different Enneagram types.",
-    "Prioritize the creation of a structured online platform or collaborative space for reviewers and content creators to discuss and refine NEWCORE criteria and best practices.",
-    "Establish a clear timeline and process for reviewing and updating the Impurity Table, ensuring regular review by a designated committee, clear guidelines for adding/removing terms, and a mechanism for community input."
+    "Develop standardized templates for Internal Process Chain Analysis, System Dynamics Diagrams, Subtype Influence Diagrams, Levels of Health analysis, and the new 'Interaction of Internal Worlds' criterion.",
+    "Expand the Impurity Table and establish a clear process for its regular review, update, and community input.",
+    "Create a comprehensive online platform with resources, including templates, examples, and forums for discussion.",
+    "Develop a reviewer checklist to ensure consistent application of all criteria.",
+    "Provide clear examples demonstrating the non-volitional nature of internal processes and how to avoid volitional language.",
+    "Clarify the scope and purpose of the 'Emergent Synthesis Narrative' and its relationship to System Dynamics Diagrams."
   ]
 }
 ```
