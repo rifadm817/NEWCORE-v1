@@ -1,59 +1,58 @@
-Version: 2
+Version: 3
 
 ```json
 {
-  "overall_score": "3",
-  "needs_revision": "true",
+  "overall_score": "4",
+  "needs_revision": "false",
   "criteria_scores": {
     "Mechanical Purity": {
-      "score": "2",
-      "feedback": "While the criteria mention mechanical derivation, they lack specific instructions on demonstrating the *how* and *why* of the connections between core dynamics and manifestations.  The criteria need to be more explicit about the level of detail required to demonstrate a true mechanical link, not just correlation."
+      "score": "5",
+      "feedback": "The new sub-criteria regarding Mechanism of Action and Internal Consistency of Mechanisms significantly strengthen this criterion by demanding explicit demonstration of the causal chain and ensuring consistent application throughout the content."
     },
     "Internal Focus": {
-      "score": "3",
-      "feedback": "The criteria adequately address the importance of internal experience, but could be strengthened by explicitly requiring internal dialogue examples to demonstrate this focus."
+      "score": "5",
+      "feedback": "Mandating internal dialogue examples greatly enhances this criterion, ensuring content delves into the subjective experience of each type."
     },
     "Non-Volitional Nature": {
       "score": "4",
-      "feedback": "This criterion is well-defined and generally understood by reviewers."
+      "feedback": "While well-defined, providing examples of volitional vs. non-volitional language would further strengthen this criterion."
     },
     "System Integration": {
-      "score": "3",
-      "feedback": "The criteria could be improved by adding more specific guidance on how to demonstrate the interconnection of different components and their emergent synthesis."
+      "score": "4",
+      "feedback": "While improved, providing specific examples of what constitutes strong system integration would increase clarity and consistency."
     },
     "Language Purity": {
-      "score": "2",
-      "feedback": "While the impurities list is helpful, it needs to be more comprehensive. The criteria should also provide positive examples of NEWCORE-compliant language to guide reviewers and content creators."
+      "score": "5",
+      "feedback": "The expanded IMPURITIES_LIST, the NEWCORE Glossary, and the inclusion of positive examples significantly improve this criterion, providing clear guidance on acceptable language."
     },
     "Dualistic Relationship with External Reality": {
-      "score": "2",
-      "feedback": "The criteria lack specific instructions on how to demonstrate this relationship.  They need to be more explicit about the kinds of examples and explanations required."
+      "score": "5",
+      "feedback": "The added sub-criteria regarding external stimuli/internal dynamics and internal dynamics/external behavior, along with refined guidance, make this criterion much more robust and actionable."
     },
     "Depth and Completeness": {
-      "score": "3",
-      "feedback": "The criteria are adequate but could be more specific about the expected depth of analysis for each section."
+      "score": "4",
+      "feedback": "While generally adequate, providing more specific expectations for the depth of analysis in each content section would be beneficial."
     },
     "Unique Insights and Nuanced Understanding": {
       "score": "4",
-      "feedback": "This criterion is well-defined and encourages deeper exploration of type dynamics."
+      "feedback": "This criterion remains well-defined, but its effectiveness could be enhanced by providing examples of what constitutes unique insights and nuanced understanding within the NEWCORE framework."
     },
     "Internal Consistency": {
-      "score": "4",
-      "feedback": "This criterion is clear and effective."
+      "score": "5",
+      "feedback": "This criterion, along with the new 'Internal Consistency of Mechanisms' sub-criterion under Mechanical Purity, ensures a coherent and unified presentation of type dynamics."
     },
     "Levels of Health": {
-      "score": "2",
-      "feedback": "The criteria lack specific guidance on the content and mechanical derivation of health level descriptions. More detailed instructions are needed."
+      "score": "5",
+      "feedback": "The refined guidance on content, mechanical derivation, and differentiation across health levels significantly strengthens this criterion, ensuring a more comprehensive and accurate portrayal of type development."
     }
   },
-  "detailed_feedback": "The current criteria provide a good foundation but need substantial revision to ensure consistent application and higher quality NEWCORE content. The primary weaknesses are a lack of specificity regarding mechanical derivation, language purity, the dualistic relationship with external reality, and levels of health. The criteria also need to be strengthened by requiring internal dialogue examples and providing more positive examples of NEWCORE-compliant language.",
+  "detailed_feedback": "The proposed revisions comprehensively address the identified weaknesses in the previous version. The new sub-criteria, refined guidance, expanded IMPURITIES_LIST, and the NEWCORE Glossary significantly enhance clarity, consistency, and rigor in applying NEWCORE principles. The emphasis on internal dialogue examples, mechanical derivation, and the dualistic relationship with external reality ensures a deeper and more nuanced understanding of type dynamics.  The recommendation for subtype integration is valuable and should be explored further in future iterations.",
   "improvement_suggestions": [
-    "Add a sub-criterion to Mechanical Purity focusing on the *mechanism* of action, requiring a step-by-step explanation of the causal chain between core dynamics and manifestations.",
-    "Add a sub-criterion to Internal Focus mandating the use of internal dialogue examples.",
-    "Expand the IMPURITIES_LIST with commonly used impure terms and provide positive examples of NEWCORE-compliant language. Create a glossary of preferred terms and their mechanical definitions.",
-    "Add sub-criteria to Dualistic Relationship with External Reality requiring specific examples of how external stimuli impact internal dynamics and vice-versa.",
-    "Refine Levels of Health by providing specific guidelines on what should be included, emphasizing mechanical derivation and differentiation across health levels.",
-    "Add a new criterion: Internal Consistency of Mechanisms, to ensure consistent application of mechanical principles throughout the description."
+    "Provide examples of volitional vs. non-volitional language for the Non-Volitional Nature criterion.",
+    "Provide specific examples illustrating strong system integration for the System Integration criterion.",
+    "Provide examples of unique insights and nuanced understanding within the NEWCORE framework for the Unique Insights and Nuanced Understanding criterion.",
+    "Develop more specific expectations for the depth of analysis in each content section for the Depth and Completeness criterion.",
+    "Formalize criteria and guidance on subtype integration within the NEWCORE framework."
   ]
 }
 ```
