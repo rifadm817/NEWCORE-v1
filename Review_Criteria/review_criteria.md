@@ -1,4 +1,4 @@
-Version: 8
+Version: 9
 
 ```json
 {
@@ -7,31 +7,31 @@ Version: 8
   "criteria_scores": {
     "Mechanical Causality": {
       "score": "4",
-      "feedback": "Version 7 and the new insights correctly identify the need for deeper mechanical explanations. While 'Internal Process Mapping' and 'Mechanism of Action' are valuable, the criteria still lack the required specificity.  The new insights begin to address this by suggesting visual aids and step-by-step process explanations, but these need to be formalized within the criteria itself."
+      "feedback": "The insights significantly improve this criterion by adding concrete requirements.  Mandating 'Internal Process Maps' and 'Mechanism of Action' for defenses provides much-needed specificity.  However, the criteria should further clarify the expected level of detail for these elements, including examples."
     },
     "Internal Focus": {
-      "score": "4",
-      "feedback": "The emphasis on internal experience is positive. However, the criteria must explicitly prohibit descriptions of external behaviors unless they are directly and demonstrably linked to internal processes.  The insights' suggestion of using sensory details is helpful and should be incorporated."
+      "score": "5",
+      "feedback": "The explicit prohibition of external behavior descriptions without a clear internal link, combined with the requirement for sensory details, strengthens this criterion considerably. This addresses a major source of impurity."
     },
     "Non-Volitional Nature": {
       "score": "5",
       "feedback": "This criterion remains well-defined."
     },
     "System Integration": {
-      "score": "4",
-      "feedback": "The insights regarding 'Emergent Synthesis' and visual aids are crucial and need to be integrated into the criteria.  The criteria should define 'Emergent Synthesis' as the demonstrable interconnectedness of core fear, desire, key process, and defenses, resulting in the unique pattern of each type."
+      "score": "5",
+      "feedback": "Introducing 'Emergent Synthesis' as a distinct criterion with a clear definition and encouragement of visual aids significantly improves the NEWCORE framework's ability to capture the interconnectedness of the Enneagram types' internal dynamics."
     },
     "Language Purity": {
       "score": "4",
-      "feedback": "Expanding the glossary with mechanically derived definitions is vital.  The insights correctly identify common impurities.  The criteria should explicitly prohibit the use of these terms unless they are redefined within a NEWCORE framework and their mechanical link is clearly established."
+      "feedback": "The recommendations for expanding the glossary and creating an 'Impurity Table' are excellent. However, the criteria should also specify the process for reviewing and updating these resources to ensure they remain comprehensive and aligned with NEWCORE principles."
     },
     "Dualistic Relationship with External Reality": {
-      "score": "4",
-      "feedback": "Mandating internal dialogue and the 'Internal-External Feedback Loop' are excellent additions.  The insights' suggestion of concrete scenarios with internal dialogues should be formalized in the criteria."
+      "score": "5",
+      "feedback": "Mandating scenario-based internal dialogues significantly strengthens this criterion by providing concrete examples of the internal-external feedback loop."
     },
     "Depth and Completeness": {
       "score": "4",
-      "feedback": "While generally effective, this criterion now needs to incorporate the increased depth required by other criteria, especially concerning mechanical causality, internal focus, and language purity.  Content must demonstrate a comprehensive understanding of the internal dynamics."
+      "feedback": "This criterion benefits from the improvements in other areas, but it should explicitly mention the expectation of incorporating the new elements like Internal Process Maps, Mechanisms of Action, and Emergent Synthesis into a comprehensive understanding."
     },
     "Unique Insights and Nuanced Understanding": {
       "score": "5",
@@ -42,28 +42,32 @@ Version: 8
       "feedback": "This criterion remains essential."
     },
     "Levels of Health": {
-      "score": "4",
-      "feedback": "The insights regarding qualitative shifts and internal dialogues are critical. The criteria should require detailed descriptions of how the core fear, desire, and defenses manifest differently across levels, moving beyond intensity."
+      "score": "5",
+      "feedback": "The 'Qualitative Shift Matrix' requirement strengthens this criterion by moving beyond simple intensity variations and emphasizing the *how* of these shifts across levels."
     },
     "Subtype Integration": {
-      "score": "4",
-      "feedback": "The insights' focus on how subtypes modify core dynamics is crucial. The criteria should mandate examples and internal dialogues demonstrating the nuanced influence of each subtype, not just behavioral differences."
+      "score": "5",
+      "feedback": "The 'Subtype Influence Table' with examples and internal dialogues significantly clarifies how subtypes modify core dynamics, moving beyond behavioral descriptions."
     },
     "Internal Timeline": {
-      "score": "N/A",
-      "feedback": "This new criterion is essential for emphasizing the *process* of reaction, from initial trigger to behavior.  It strengthens the mechanical focus and discourages simple behavioral labeling."
+      "score": "5",
+      "feedback": "The requirement for a step-by-step breakdown, including time scales, strengthens the mechanical focus and provides valuable detail about the process of reaction."
     },
     "Cognitive Biases": {
+      "score": "5",
+      "feedback": "Requiring explicit explanations of the link between biases, core fear, and key process significantly enhances the mechanical understanding of cognitive biases within the NEWCORE framework."
+    },
+    "Emergent Synthesis": {
       "score": "N/A",
-      "feedback": "This proposed criterion adds significant depth by linking cognitive biases to the core fear and key process. It enhances the mechanical understanding and provides new avenues for insightful analysis."
+      "feedback": "This new criterion is crucial for ensuring a holistic understanding of the type's internal system. The definition and encouragement of visual aids are well-considered."
     }
   },
-  "detailed_feedback": "Version 8 builds upon previous iterations by focusing on the *how* and *why* of internal dynamics.  The new insights provide valuable direction, particularly regarding exemplar content, mechanical causality, and language purity. The addition of 'Internal Timeline' and 'Cognitive Biases' significantly strengthens the NEWCORE framework.  The key improvement is the formalization of these insights into explicit criteria, enabling clearer evaluation and promoting higher content purity.",
+  "detailed_feedback": "Version 9 represents a substantial improvement in the NEWCORE criteria. The insights are effectively integrated, addressing key weaknesses and promoting greater clarity and consistency.  The new criteria, particularly 'Emergent Synthesis,' and the refined requirements for existing criteria significantly enhance the framework's ability to ensure content purity and facilitate nuanced understanding of the Enneagram.  The focus on concrete examples, visual aids, and structured tables will greatly aid content creators and reviewers.",
   "improvement_suggestions": [
-    "Formalize the insights' recommendations into specific requirements within each criterion.  This includes mandating internal dialogues, visual aids where appropriate, step-by-step process explanations, and detailed descriptions of qualitative shifts in levels of health and subtype influence.",
-    "Expand the glossary with mechanically derived definitions for commonly misused terms, and explicitly prohibit impure language unless redefined within the NEWCORE framework.",
-    "Provide detailed exemplar content demonstrating the correct application of each criterion, including examples of internal process maps, mechanism of action for defenses, internal-external feedback loops, levels of health, subtype integration, internal timelines, and cognitive biases.",
-    "Develop a structured feedback mechanism (e.g., online platform) for reviewers and content creators to contribute to the ongoing refinement of the NEWCORE criteria and exemplar content."
+    "Provide detailed examples of Internal Process Maps, Mechanisms of Action, Qualitative Shift Matrices, and Subtype Influence Tables within the criteria or accompanying documentation.",
+    "Develop a clear process for reviewing and updating the glossary and 'Impurity Table' to ensure they remain comprehensive and aligned with evolving NEWCORE understanding.",
+    "Develop and disseminate exemplar content showcasing best practices for each criterion across different Enneagram types.",
+    "Create a structured online platform or collaborative space for reviewers and content creators to discuss and refine NEWCORE criteria and best practices."
   ]
 }
 ```
