@@ -1,45 +1,79 @@
 ## NEWCORE Comparison: Enneagram Type 2 vs. Type 7
 
-Both Type 2 and Type 7 experience a core wound related to unmet needs, but their responses diverge significantly, leading to distinct internal worlds and coping mechanisms.
+This comparison explores the distinct internal worlds of Type 2 and Type 7 within the NEWCORE framework, meticulously tracing their divergent responses to a shared core wound of unmet needs.
 
-**1. Core Fear and Desire Differences:**
+**1. Core Fear and Desire:**
 
-| Feature        | Type 2                               | Type 7                                         |
-|----------------|---------------------------------------|-------------------------------------------------|
-| **Core Fear** | Being unloved, unwanted, unworthy.  Focuses on a lack of inherent value and a fear of rejection based on this perceived deficiency. | Being trapped, limited, experiencing pain/discomfort, missing out, bored, facing inner emptiness. Focuses on a lack of fulfillment and a fear of negative internal states. |
-| **Core Desire** | To be loved, needed, appreciated, worthy. Seeks external validation to compensate for the perceived lack of inherent worth. | To be free, experience excitement/novelty, enjoy pleasure, feel stimulated, explore possibilities, achieve fulfillment/wholeness. Seeks external experiences to avoid negative internal states and achieve a sense of completion. |
+Both types react to perceived unmet needs, triggering distinct internal processes.
 
-**Key Distinction:**  Type 2's fear and desire revolve around *other people's perceptions* and the need for external validation. Type 7's fear and desire center on *internal states* and the need to avoid negative experiences and pursue positive ones.
+* **Type 2:** Experiences a core fear of being inherently unlovable, leading to a perceived absence of connection and belonging. This triggers a deep-seated desire for consistent external validation of lovability, manifesting as a compulsion to anticipate and fulfill others' needs.  This compulsive behavior is an automatic attempt to elicit expressions of love and appreciation, thereby counteracting the core fear.
+
+* **Type 7:**  Experiences a core fear of being trapped in a state of unfulfillment and pain. This perceived threat of enduring negativity fuels a desire for continuous positive internal states. This desire manifests as a compulsion to seek novel experiences and mental expansion, automatically diverting attention from potential sources of discomfort and maintaining a sense of expansive possibility.
+
 
 **2. Key Process Distinctions:**
 
-| Type | Key Process                      | Description                                                                                                                                |
-|------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| 2    | Pride (Distorted Sense of Worth) |  Unconsciously inflates their sense of self-worth by focusing on their perceived usefulness to others.  Self-esteem is contingent on external validation. |
-| 7    | Mental Expansion & Reframing     |  Avoids negative internal states by generating alternative scenarios, possibilities, and plans. Focus shifts to a more desirable future or imagined reality. |
+* **Type 2: Image Distortion:** The Two's internal process distorts their self-image based on perceived external feedback. Positive feedback reinforces a temporary sense of lovability, while negative feedback intensifies the core fear. This creates a reactive cycle where self-worth becomes contingent on external validation.
 
-**Key Distinction:** Type 2's key process involves manipulating *self-perception* through external feedback. Type 7's key process involves manipulating *focus and attention* to avoid negative internal experiences.
+* **Type 7: Predictive Reframing:** The Seven's internal process anticipates potential negative experiences and automatically generates alternative scenarios. This preemptive reframing minimizes the perceived threat of pain or limitation by shifting focus to more desirable imagined realities.
 
 **3. Defensive Mechanism Contrasts:**
 
-While both types utilize defense mechanisms, their motivations and manifestations differ:
+These automatic responses further protect against core fears.
 
-| Type | Defense Mechanism | Description                                                                                                       |
-|------|-------------------|-------------------------------------------------------------------------------------------------------------------|
-| 2    | Repression         | Suppresses own needs and feelings to avoid being perceived as needy or burdensome.                                   |
-| 7    | Rationalization    | Explains away unpleasant realities or difficult emotions to maintain a positive outlook and avoid negative feelings. |
-| 2    | Reaction Formation | Expresses the opposite of their true feelings to maintain relationships and avoid conflict.                      |
-| 7    | Sublimation       | Channels anxieties into seemingly positive activities, masking the underlying fear of emptiness.                     |
+* **Type 2: Repression and Reaction Formation:**  The Two represses their own needs to prioritize others', creating a perceived value proposition for receiving love. Reaction formation manifests as exaggerated positivity to mask potential resentment arising from unmet personal needs.
 
+* **Type 7: Rationalization and Minimization:** The Seven rationalizes avoiding potentially limiting situations, justifying their choices as necessary for maintaining a positive internal state. Minimization downplays the significance of potential negative experiences, further reducing their perceived threat.
 
-**Key Distinction:** Type 2’s defenses primarily focus on *managing others’ perceptions* of them, while Type 7’s defenses focus on *managing their own internal experience*.
 
 **4. Potential Misidentification Factors:**
 
-* Both types can appear outwardly positive and engaging, potentially leading to confusion.  However, the underlying motivations are distinct. Type 2's positivity is driven by a need to please and be liked, while Type 7's positivity stems from a need to maintain a positive internal state.
-* Both types can be generous and helpful.  Type 2's generosity is often tied to a need to be needed and appreciated, while Type 7's generosity may be more impulsive and less attached to external validation.
-* Both types can struggle with acknowledging difficult emotions. Type 2 represses them to avoid burdening others, while Type 7 reframes or distracts themselves from them to avoid experiencing internal discomfort.
+Wing influence can create superficial similarities.
+
+* **2w1 and 7w2:** Both may appear helpful. However, the 2w1's helpfulness stems from a compulsive need to prove their lovability through acts of service, while the 7w2's stems from a desire to create positive social connections that facilitate access to novel experiences.
+
+* **7w6 and 2w7:** Both may appear enthusiastic. However, the 7w6's enthusiasm stems from a compulsive need to avoid boredom and maintain a sense of expansive possibility, while the 2w7's stems from a desire to create engaging connections that elicit expressions of appreciation.
 
 **5. Interaction of Internal Worlds:**
 
-In interactions, a Type 2 might unconsciously attempt to anticipate and fulfill a Type 7's needs, potentially fueling the Type 7's avoidance of internal reflection. The Type 7's constant pursuit of new experiences might leave the Type 2 feeling emotionally drained and unappreciated, reinforcing their core fear of not being enough.  However, a healthy Type 7 can appreciate the genuine care offered by a healthy Type 2, and a healthy Type 2 can learn from a Type 7’s ability to find joy and embrace new experiences.
+**(Scenario: Planning a weekend trip)**
+
+* **Two (Internal Dialogue):** "I hope they'll like where I chose.  Maybe I should have asked more questions about what *they* wanted. What if they're secretly disappointed? I need to make sure everything is perfect so they'll see how much I care."
+
+* **Seven (Internal Dialogue):** "This itinerary looks too structured.  What if we get bored?  There's that cool festival happening nearby – we could spontaneously go there instead!  I need to keep my options open."
+
+* **Interaction:** The Two suggests pre-booked activities, triggering the Seven's fear of limitation. The Seven proposes alternative plans, triggering the Two's fear of not meeting the other's needs and thus not being appreciated.
+
+**6. Levels of Health:**
+
+**(Example: Disagreement with a friend)**
+
+* **Healthy Two:**  Expresses their own needs while acknowledging the friend's perspective, maintaining a sense of self-worth independent of external validation.
+
+* **Average Two:** Attempts to smooth over the disagreement by prioritizing the friend's needs, potentially repressing their own feelings to maintain the connection.
+
+* **Unhealthy Two:**  Becomes manipulative or aggressive, projecting their insecurities onto the friend, driven by an intensified fear of abandonment.
+
+* **Healthy Seven:** Acknowledges the friend's perspective and finds a mutually enjoyable solution, maintaining a sense of grounded optimism.
+
+* **Average Seven:** Avoids the conflict altogether, rationalizing their avoidance as preserving positive energy, potentially neglecting the friend's needs.
+
+* **Unhealthy Seven:** Becomes impulsive and reckless, engaging in escapist behaviors to avoid the discomfort of the disagreement.
+
+
+**(7-12: Subtype Integration, Internal Timeline, Cognitive Biases, Emergent Synthesis, System Dynamics Diagrams, and Subtype Influence Diagrams)**  *(These sections require visual aids and further detailed explanations.  Placeholders are included below for structure.)*
+
+**7. Subtype Integration:** *(Include Subtype Influence Diagrams and explanations for how each subtype integrates.)*
+
+**8. Internal Timeline:** *(Describe how the internal processes unfold over time for each type in specific scenarios.)*
+
+**9. Cognitive Biases:** *(Explain and provide examples of how specific cognitive biases manifest mechanically for each type, linked to their core fear and desire.)*
+
+**10. Emergent Synthesis:** *(Develop System Dynamics Diagrams and accompanying narratives for each type to demonstrate the emergent synthesis of their internal systems.)*
+
+**11. System Dynamics Diagrams:** *(Include visual diagrams for each type.)*
+
+**12. Subtype Influence Diagrams:** *(Include visual diagrams for each subtype.)*
+
+
+This revised comparison provides a deeper exploration of the internal mechanics of Type 2 and Type 7, emphasizing the causal chain between core fear, desire, and resulting behaviors, while adhering to NEWCORE principles.  Further development of the remaining sections with visual aids and detailed explanations will provide a comprehensive understanding of these distinct internal worlds.
