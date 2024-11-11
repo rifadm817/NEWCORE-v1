@@ -1,17 +1,17 @@
-Version: 6
+Version: 7
 
 ```json
 {
   "overall_score": "4",
-  "needs_revision": "false",
+  "needs_revision": "true",
   "criteria_scores": {
     "Mechanical Causality": {
       "score": "4",
-      "feedback": "While Version 5 improved clarity, the new insights reveal a need for deeper mechanical explanations.  Content often *states* connections between core dynamics and behavior without fully explaining the *how* and *why*. The proposed 'Internal Process Mapping' sub-criterion directly addresses this gap."
+      "feedback": "Version 6 identified the need for deeper mechanical explanations, and Version 7 proposes valuable sub-criteria like 'Internal Process Mapping' and 'Mechanism of Action.'  However, the criteria still lack specific examples demonstrating how to apply these sub-criteria effectively.  This makes it challenging for content creators to understand the level of detail required and for reviewers to assess compliance consistently."
     },
     "Internal Focus": {
       "score": "4",
-      "feedback": "The insights highlight the persistent challenge of maintaining an internal focus.  The proposed 'Internal Experience Focus' sub-criterion under Language Purity strengthens this area by explicitly requiring descriptions of subjective experience."
+      "feedback": "While 'Internal Experience Focus' is a valuable addition, the criteria should further emphasize distinguishing between internal experiences and externally observable behaviors.  More examples illustrating this distinction are needed."
     },
     "Non-Volitional Nature": {
       "score": "5",
@@ -19,19 +19,19 @@ Version: 6
     },
     "System Integration": {
       "score": "4",
-      "feedback": "The new insights reinforce the need for clearer examples and a more holistic understanding of system integration.  The proposed visual aids and 'Emergent Synthesis' explanation directly address this weakness."
+      "feedback": "The suggestion to encourage visual aids is helpful, but the criteria should provide more guidance on *what* constitutes effective system integration.  Define 'Emergent Synthesis' more concretely and provide specific examples of how to demonstrate it."
     },
     "Language Purity": {
       "score": "4",
-      "feedback": "The insights confirm that impure language remains a significant issue.  Expanding the glossary and introducing the 'Internal Experience Focus' sub-criterion will further strengthen language purity."
+      "feedback": "Expanding the glossary is crucial.  Prioritize terms commonly misused in Enneagram discussions, focusing on mechanically derived definitions. The criteria should also offer examples of pure vs. impure language for common concepts."
     },
     "Dualistic Relationship with External Reality": {
       "score": "4",
-      "feedback": "While Version 5 improved this area, the insights highlight the need for more concrete examples and internal dialogue to illustrate the dynamic interplay between internal and external realities.  The proposed sub-criterion and mandated internal dialogue examples address this."
+      "feedback": "Mandating internal dialogue and introducing the 'Internal-External Feedback Loop' are valuable additions.  However, the criteria should provide clear examples of how to effectively illustrate these concepts for different types."
     },
     "Depth and Completeness": {
       "score": "5",
-      "feedback": "This criterion functions effectively."
+      "feedback": "This criterion functions effectively, especially with the added requirements in other areas enriching content."
     },
     "Unique Insights and Nuanced Understanding": {
       "score": "5",
@@ -43,18 +43,20 @@ Version: 6
     },
     "Levels of Health": {
       "score": "4",
-      "feedback": "The insights reveal that this criterion is often underdeveloped. The proposed sub-criteria and exemplar content provide the necessary structure and guidance for improvement."
+      "feedback": "The proposed sub-criteria for each level of health provide valuable structure.  However, the criteria need specific examples demonstrating the qualitative shifts in internal experience across levels.  Simply stating intensity is insufficient."
     },
     "Subtype Integration": {
       "score": "4",
-      "feedback": "While present in Version 5, the insights suggest that subtype integration is underutilized. The proposed examples and refined feedback prompts will enhance its application."
+      "feedback": "While mandating subtype influence analysis is a step forward, the criteria should offer specific examples illustrating how each subtype nuances the core dynamics for each type.  Clearly defined sub-criteria for each subtype are also needed."
     }
   },
-  "detailed_feedback": "Version 6 builds upon the strengths of Version 5 while addressing key weaknesses identified in the meta-review analysis. The proposed changes aim to deepen mechanical understanding, strengthen language purity, enhance system integration, clarify the application of levels of health and subtype integration, and further refine the depiction of the dualistic relationship with external reality.  These enhancements will lead to more rigorous, insightful, and NEWCORE-compliant content.",
+  "detailed_feedback": "Version 7 builds upon Version 6 by introducing crucial sub-criteria and clarifying expectations. However, the primary weakness remains the lack of concrete examples demonstrating how to apply these enhanced criteria effectively.  Providing comprehensive exemplar content for each criterion and sub-criterion is essential for ensuring consistent application and achieving NEWCORE purity.",
   "improvement_suggestions": [
-    "Develop comprehensive exemplar content for all criteria, including specific examples of Internal Process Mapping, Internal Experience Focus, Internal-External Feedback Loops, Levels of Health sub-criteria, and Subtype Integration.",
-    "Create visual aids and flowcharts illustrating system integration for different Enneagram types.",
-    "Continuously monitor the application of the new criteria and solicit feedback from reviewers and content creators to identify areas for further refinement."
+    "Develop comprehensive exemplar content for *all* criteria and sub-criteria, illustrating both correct and incorrect applications. This includes specific examples of Internal Process Mapping, Mechanism of Action for defense mechanisms, Internal Experience Focus, Emergent Synthesis, Internal-External Feedback Loops, Levels of Health sub-criteria (with qualitative descriptions of internal shifts), and Subtype Integration sub-criteria (demonstrating nuanced subtype influence).",
+    "Expand the glossary with mechanically derived definitions for commonly misused terms (e.g., 'success,' 'value,' 'attention,' 'manipulation'), providing examples of pure and impure usage.",
+    "Provide clear examples of how visual aids (e.g., flowcharts, diagrams) can be used to illustrate system integration and internal processes for different Enneagram types.",
+    "Create a dedicated section with examples of internal dialogue for each Enneagram type, demonstrating how their internal world shapes their perception and reaction to external situations.",
+    "Establish a clear feedback mechanism for reviewers and content creators to contribute to the ongoing refinement of the NEWCORE criteria and exemplar content."
   ]
 }
 ```
