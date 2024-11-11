@@ -1,60 +1,60 @@
-Version: 5
+Version: 6
 
 ```json
 {
-  "overall_score": "5",
+  "overall_score": "4",
   "needs_revision": "false",
   "criteria_scores": {
     "Mechanical Causality": {
-      "score": "5",
-      "feedback": "The reframing to 'Mechanical Causality' and the inclusion of sub-criteria (Internal Triggers, Process Steps, and Feedback Loops) effectively clarifies the requirement for demonstrating the causal chain of internal dynamics.  The addition of exemplar content provides valuable concrete guidance."
+      "score": "4",
+      "feedback": "While Version 5 improved clarity, the new insights reveal a need for deeper mechanical explanations.  Content often *states* connections between core dynamics and behavior without fully explaining the *how* and *why*. The proposed 'Internal Process Mapping' sub-criterion directly addresses this gap."
     },
     "Internal Focus": {
-      "score": "5",
-      "feedback": "The strengthened guidance, mandating distinct internal dialogue examples and explicitly contrasting with behavioral descriptions, ensures a strong focus on internal experience."
+      "score": "4",
+      "feedback": "The insights highlight the persistent challenge of maintaining an internal focus.  The proposed 'Internal Experience Focus' sub-criterion under Language Purity strengthens this area by explicitly requiring descriptions of subjective experience."
     },
     "Non-Volitional Nature": {
       "score": "5",
-      "feedback": "Maintaining the existing criteria with continued emphasis ensures adherence to this core principle."
+      "feedback": "This criterion remains well-defined and effectively applied."
     },
     "System Integration": {
       "score": "4",
-      "feedback": "While improved, this criterion still benefits from additional examples demonstrating strong system integration across different type comparisons.  This would further enhance clarity and consistency in application."
+      "feedback": "The new insights reinforce the need for clearer examples and a more holistic understanding of system integration.  The proposed visual aids and 'Emergent Synthesis' explanation directly address this weakness."
     },
     "Language Purity": {
-      "score": "5",
-      "feedback": "The continuous glossary expansion and refinement ensures robust guidance and supports NEWCORE purity."
+      "score": "4",
+      "feedback": "The insights confirm that impure language remains a significant issue.  Expanding the glossary and introducing the 'Internal Experience Focus' sub-criterion will further strengthen language purity."
     },
     "Dualistic Relationship with External Reality": {
-      "score": "5",
-      "feedback": "The structured guidance with scenario examples and internal dialogue integration effectively clarifies the reciprocal influence between internal dynamics and external reality."
+      "score": "4",
+      "feedback": "While Version 5 improved this area, the insights highlight the need for more concrete examples and internal dialogue to illustrate the dynamic interplay between internal and external realities.  The proposed sub-criterion and mandated internal dialogue examples address this."
     },
     "Depth and Completeness": {
       "score": "5",
-      "feedback": "The implementation of word count recommendations provides a helpful benchmark while maintaining flexibility for complex comparisons."
+      "feedback": "This criterion functions effectively."
     },
     "Unique Insights and Nuanced Understanding": {
       "score": "5",
-      "feedback": "The inclusion of exemplar content effectively clarifies what constitutes insightful analysis beyond basic descriptions."
+      "feedback": "This criterion remains well-defined and effectively promotes insightful analysis."
     },
     "Internal Consistency": {
       "score": "5",
-      "feedback": "Maintaining this well-defined criterion ensures the logical coherence of NEWCORE analyses."
+      "feedback": "This criterion effectively ensures logical coherence."
     },
     "Levels of Health": {
-      "score": "5",
-      "feedback": "The detailed descriptions and emphasis on mechanical derivation ensure a nuanced and accurate portrayal of health levels."
+      "score": "4",
+      "feedback": "The insights reveal that this criterion is often underdeveloped. The proposed sub-criteria and exemplar content provide the necessary structure and guidance for improvement."
     },
     "Subtype Integration": {
-      "score": "5",
-      "feedback": "The formal inclusion of this criterion with clear sub-criteria addresses a crucial gap and strengthens the comprehensiveness of NEWCORE analysis."
+      "score": "4",
+      "feedback": "While present in Version 5, the insights suggest that subtype integration is underutilized. The proposed examples and refined feedback prompts will enhance its application."
     }
   },
-  "detailed_feedback": "Version 5 of the NEWCORE criteria demonstrates a significant improvement in clarity, specificity, and applicability. The addressed gaps in Mechanical Causality, Dualistic Relationship with External Reality, and Levels of Health, along with the introduction of Subtype Integration and the enhanced guidance for other criteria, ensure a more rigorous and consistent application of NEWCORE principles.  The inclusion of exemplar content and word count recommendations provides valuable practical support for both content creators and reviewers. The focus on *how* internal dynamics function, rather than just *what* they are, strengthens the core principles of mechanical derivation and internal focus.",
+  "detailed_feedback": "Version 6 builds upon the strengths of Version 5 while addressing key weaknesses identified in the meta-review analysis. The proposed changes aim to deepen mechanical understanding, strengthen language purity, enhance system integration, clarify the application of levels of health and subtype integration, and further refine the depiction of the dualistic relationship with external reality.  These enhancements will lead to more rigorous, insightful, and NEWCORE-compliant content.",
   "improvement_suggestions": [
-    "Continue to refine and expand the exemplar content for Mechanical Causality, Levels of Health, and Unique Insights and Nuanced Understanding to cover a wider range of types and comparisons.",
-    "Develop specific examples illustrating strong system integration for the 'System Integration' criterion across various type comparisons.",
-    "Continuously solicit feedback from reviewers and content creators to identify areas for further refinement and clarification within the criteria."
+    "Develop comprehensive exemplar content for all criteria, including specific examples of Internal Process Mapping, Internal Experience Focus, Internal-External Feedback Loops, Levels of Health sub-criteria, and Subtype Integration.",
+    "Create visual aids and flowcharts illustrating system integration for different Enneagram types.",
+    "Continuously monitor the application of the new criteria and solicit feedback from reviewers and content creators to identify areas for further refinement."
   ]
 }
 ```
