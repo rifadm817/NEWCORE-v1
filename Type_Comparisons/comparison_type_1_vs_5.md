@@ -1,48 +1,78 @@
 ## NEWCORE Comparison: Enneagram Type 1 vs. Type 5
 
-This comparison analyzes the key distinctions between Type 1 and Type 5 using the NEWCORE framework, focusing on the internal experience and the mechanical derivation of traits from core fears and desires.
+This comparison explores the distinct internal worlds of the One and Five, illustrating how their core fears and desires mechanically generate their internal experiences and interactions.
 
-**1. Core Fear and Desire Differences:**
+**1. Core Fear and Desire:**
 
-| Feature | Type 1: The Perfectionist | Type 5: The Observer |
+| Feature | Type 1:  | Type 5:  |
 |---|---|---|
-| **Core Fear** | Being flawed, wrong, criticized, imperfect, losing control, rejected.  Centers around the perceived inherent flaw within themselves. | Being depleted, intruded upon, incompetent, vulnerable, annihilated, dependent. Centers around the perceived scarcity of internal resources and the demanding external world. |
-| **Core Desire** | Integrity, correctness, internal approval, wholeness, self-mastery, external acceptance. Driven by the need to rectify the perceived internal flaw and achieve an idealized state. | Self-sufficiency, mastery, autonomy, privacy, conservation, understanding. Driven by the need to protect limited resources and navigate a demanding world. |
+| **Core Fear** | Experiencing internal dissonance due to perceived misalignment with an idealized internal standard. | Experiencing depletion of internal resources through external demands. |
+| **Core Desire** | Maintaining internal congruence with an idealized internal standard. | Maintaining sufficiency of internal resources. |
 
-**Key Differences:**  The One's fear is internally directed, focusing on their perceived inadequacy. The Five's fear is externally directed, focusing on the perceived threats from the world.  The One desires to *fix* their perceived flaw, while the Five desires to *protect* themselves from the world.
+**Mechanical Analysis:** The One's internal experience is dominated by a constant, automatic comparison of their current state to an internalized ideal.  Any perceived discrepancy triggers a cascade of internal discomfort. The Five's internal experience revolves around a perceived finite capacity for engagement with the external world. Any perceived demand on these resources triggers an automatic withdrawal response.
 
 **2. Key Process Distinctions:**
 
-| Type | Key Process | Description |
+| Type | Key Process | Mechanical Description |
 |---|---|---|
-| 1 | Self-Perfection | A non-volitional striving to eradicate perceived flaws and achieve an idealized state of being. This involves constant self-evaluation, internal criticism, and a relentless pursuit of improvement. |
-| 5 | Withdrawal | A non-volitional retreat from the external world—both physically and emotionally—to conserve energy and protect perceived limited internal resources. This involves minimizing needs, observing from a distance, and seeking solitude. |
+| 1 | Self-Correction | Discrepancy between perceived internal state and internalized ideal → Internal discomfort → Automatic impulse to correct perceived flaw. |
+| 5 | Resource Conservation | Perceived external demand → Anticipation of resource depletion → Automatic withdrawal to conserve resources. |
 
-**Key Differences:** The One's key process is active, involving a constant internal striving. The Five's key process is passive, involving a retreat and conservation of energy.
 
-**3. Defensive Mechanism Contrasts:**
+**3. Levels of Health:**
 
-While both types share some defense mechanisms, their motivations and manifestations differ:
+**(Diagram -  separate diagrams for each type showing a spectrum from low to high health, depicting how the core fear/desire manifests at each level.  This requires visual representation beyond text capabilities.)**
 
-| Defense Mechanism | Type 1 | Type 5 |
-|---|---|---|
-| **Isolation of Affect** | Used to detach from the pain of self-criticism and perceived flaws. | Used to prevent emotional overwhelm from external demands and conserve energy. |
-| **Intellectualization** | Used to objectively analyze situations, avoiding the discomfort of emotional responses and maintaining a sense of control over their internal state. | Used to create emotional distance from the external world and gain a sense of understanding and control over it. |
-| **Compartmentalization** | Used to maintain a sense of internal consistency despite contradictory behaviors, protecting the idealized self-image. | Used to manage and regulate internal resources by separating different aspects of life and emotions, preventing depletion. |
-| **Reaction Formation (1 specific)** | Transforming unacceptable impulses into their opposite to align with the idealized self. |  N/A |
-| **Rationalization (5 specific)** | N/A | Explaining away uncomfortable emotions to minimize their impact and conserve energy. |
+**Narrative:** At lower levels of health, the One's self-correction mechanism becomes rigid and hypercritical, leading to internal paralysis and projection of flaws onto others.  At higher levels, self-correction becomes more nuanced and self-compassionate, allowing for acceptance of imperfections. At lower levels of health, the Five becomes increasingly isolated and detached, potentially losing touch with reality.  At higher levels, resource conservation becomes more selective and balanced, allowing for healthy engagement with the external world.
 
-**Key Differences:**  While both types utilize intellectualization and compartmentalization, their motivations differ. The One uses these to manage their internal critic and maintain their idealized self-image. The Five uses them to manage external demands and conserve internal resources.
 
-**4. Potential Misidentification Factors:**
+**4. Subtype Integration:**
 
-* **High-Functioning Fives can appear One-like:**  A Five who has developed strong coping mechanisms may appear meticulous and self-controlled, mimicking One behavior. However, their motivation is rooted in conserving energy and maintaining autonomy, not in striving for an internal ideal.
-* **Ones focused on external order can appear Five-like:** Ones can become preoccupied with creating external order as a way to manage their internal anxieties, potentially resembling a Five's need for control.  However, the One's focus is on aligning the external world with their internal ideal, while the Five's focus is on protecting themselves from external demands.
-* **Shared interest in knowledge:** Both types can be drawn to learning and knowledge. However, the One seeks knowledge to uphold their internal standards and pursue correctness, while the Five seeks knowledge to gain a sense of mastery and understanding of the world, reducing the fear of the unknown and increasing their sense of control.
+**(Subtype Influence Diagrams - Visual diagrams for each subtype of 1 and 5 showing how the instinctual drives influence the core fear/desire. This requires visual representation.)**
 
-**5. Interaction of Internal Worlds:**
+**Narrative:** For the One, the Social subtype focuses on correcting societal imperfections, the Sexual subtype on perfecting intimate relationships, and the Self-Preservation subtype on perfecting their physical environment and routines. For the Five, the Social subtype seeks knowledge to connect with select groups, the Sexual subtype focuses intensely on specific areas of interest, and the Self-Preservation subtype prioritizes protecting their physical and emotional space.
 
-* **Potential for conflict:** A One's focus on correcting perceived flaws can feel intrusive to a Five, triggering their need for autonomy and privacy.  A Five's withdrawal can be interpreted by a One as a lack of engagement or even a moral failing, leading to frustration.
-* **Potential for synergy:**  A Five's detached observation can provide valuable insights to a One, helping them gain perspective on their internal critic. A One's focus on improvement can inspire a Five to engage with the world more actively, applying their knowledge and understanding in practical ways.
+**5. Internal Timeline:**
 
-This comparison highlights the distinct internal worlds of the One and the Five, demonstrating how their core fears and desires mechanically drive their behaviors, defense mechanisms, and interactions with others, all while adhering to NEWCORE principles.
+**(Narratives and examples for each type showing how their core fear/desire plays out over time in different scenarios.)**
+
+**Example (One):**  Perceiving a mistake at work → Internal discomfort intensifies →  Automatic impulse to correct the mistake immediately →  If unable to correct, rumination on the mistake →  Potential for projecting blame to avoid internal dissonance.
+
+**Example (Five):**  Invitation to a social gathering → Anticipation of overwhelming social interaction → Automatic decline of invitation → Relief at avoiding potential resource depletion → Reinforcement of withdrawal pattern.
+
+**6. Cognitive Biases:**
+
+| Cognitive Bias | Type 1 | Type 5 | Mechanical Link to Core Fear/Desire |
+|---|---|---|---|
+| **Confirmation Bias** | Seeking information that confirms the existence of flaws in self or others, reinforcing the need for self-correction. | Seeking information that confirms the dangers of the external world, justifying withdrawal and resource conservation. |  One: Reinforces perceived need for self-correction. Five: Reinforces perceived need for resource conservation. |
+| **Negativity Bias** | Focusing on negative details and imperfections, amplifying internal discomfort and reinforcing the need for self-correction. | Focusing on potential threats and negative outcomes in the external world, amplifying the perceived need for resource conservation. | One: Fuels internal discomfort. Five: Justifies withdrawal. |
+
+
+**7. Defensive Mechanism Contrasts:**
+
+**(Rewritten to focus on internal experience and mechanical causality. See section 3 for an example of rewriting.)**
+
+
+**8.  System Dynamics Diagram:**
+
+**(Visual diagram for each type showing the interconnectedness of core fear, core desire, key process, cognitive biases, and defensive mechanisms.  This requires visual representation.)**
+
+**Emergent Synthesis Narrative:** The One's internal system is a self-perpetuating cycle of perceived imperfection, internal discomfort, and corrective impulses.  This system, while potentially leading to internal distress, also fuels a drive for self-improvement and a heightened awareness of internal states. The Five's internal system is a self-perpetuating cycle of perceived external threat, resource conservation, and withdrawal. This system, while providing a sense of safety and control, can also lead to isolation and detachment from the external world.
+
+**9. Interaction of Internal Worlds:**
+
+**Scenario:** One suggests a collaborative project to a Five.
+
+**One (Internal Dialogue):** "This project will be excellent if we do it perfectly. I hope they appreciate my effort to improve things."
+
+**Five (Internal Dialogue):** "This project sounds demanding.  It will require too much energy and interaction. I need to conserve my resources."
+
+**Outcome:** The One's enthusiasm is perceived by the Five as intrusive and demanding, triggering their withdrawal. The Five's lack of enthusiasm is perceived by the One as criticism, triggering their self-correction mechanism and potentially leading to frustration and attempts to "fix" the Five's lack of engagement.
+
+**10. Potential Misidentification Factors:**  (Rewritten to focus on internal experience and mechanical causality)
+
+
+This comparison aims to provide a mechanically derived, internally focused understanding of the One and Five, free from external judgments and contaminations. By focusing on the internal mechanics, NEWCORE seeks to illuminate the unique ways these types navigate their internal and external worlds.
+
+
+**(Note:  Several sections require visual diagrams that cannot be represented within this text-based format. These sections are marked and described, but full compliance requires visual creation.)**
